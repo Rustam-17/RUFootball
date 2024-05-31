@@ -70,9 +70,11 @@ public class RPLQuiz : MonoBehaviour
 
         _counter.text = $"{_currentCount}/{_count}";
         _question.text = _questions[questionOrder];
+        _answerButtons[_lastClickedAnswerButtonIndex].GetComponent<Image>().sprite = _buttonImage;
 
         SetAnswerButtons(questionOrder);
 
+        _isAnswered = false;
         _currentCount++;
     }
 
@@ -178,6 +180,11 @@ public class RPLQuiz : MonoBehaviour
         for (int i = 0; i < _count; i++)
         {
             _questionsOrder.Add(number++);
+        }
+
+        foreach (Button button in _answerButtons)
+        {
+            button.GetComponent<Image>().sprite = _buttonImage;
         }
 
         Shuffle(_questionsOrder);
