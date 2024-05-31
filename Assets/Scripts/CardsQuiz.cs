@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,28 +11,48 @@ public class CardsQuiz : MonoBehaviour
     [SerializeField] private Button _acceptButton;
     [SerializeField] private TMP_Text _counter;
     [SerializeField] private Image _image;
+    [SerializeField] private Transform _resultsScreen;
+    [SerializeField] private TMP_Text _results;
+    [SerializeField] private Sprite _buttonImage;
+    [SerializeField] private Sprite _buttonPressedImage;
 
     private List<int> _questionsOrder;
-    private TMP_Text _answerButtonText;
     private int _count;
     private int _currentCount;
+    private int _score;
+    private int _neverClickedAnswerButtonIndex;
+    private int _currentClickedAnswerButtonIndex;
+    private int _lastClickedAnswerButtonIndex;
+    private int _rightAnswerIndex;
     private bool _isAnswered;
 
     private void OnEnable()
     {
-        foreach(Button button in _answerButtons)
+        for (int i = 0; i < _answerButtons.Count; i++)
         {
-            button.onClick.AddListeners();
+            int index = i;
+
+            _answerButtons[i].onClick.AddListener(() => OnAnswerButtonClick(index));
         }
+
+        _acceptButton.onClick.AddListener(OnAcceptButtonClick);
     }
 
     private void OnDisable()
     {
-        
+        for (int i = 0; i < _answerButtons.Count; i++)
+        {
+            _answerButtons[i].onClick.RemoveListener(() => OnAnswerButtonClick(i));
+        }
+
+        _acceptButton.onClick.RemoveListener(OnAcceptButtonClick);
     }
 
     private void Start()
     {
+        _neverClickedAnswerButtonIndex = -1;
+        _count = _images.Count;
+        _currentCount = 1;
         _questionsOrder = new List<int>();
 
         int number = 1;
@@ -43,13 +62,11 @@ public class CardsQuiz : MonoBehaviour
             _questionsOrder.Add(number++);
         }
 
-        _count = _images.Count;
-        _currentCount = 1;
-
         Shuffle(_questionsOrder);
+        CreateNewQuestion();
     }
 
-    private void CreateQuestion()
+    private void CreateNewQuestion()
     {
         int questionOrder = _questionsOrder[_currentCount - 1];
 
@@ -59,11 +76,12 @@ public class CardsQuiz : MonoBehaviour
 
         SetAnswerButtons(questionOrder);
 
+        _currentCount++;
     }
 
     private void Shuffle(List<int> numbers)
     {
-        for (int i = _count - 1; i > 0; i--)
+        for (int i = numbers.Count - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
             int temp = numbers[i];
@@ -84,19 +102,65 @@ public class CardsQuiz : MonoBehaviour
 
         Shuffle(indices);
 
-        int randomButtonIndex = Random.Range(0, _answerButtons.Count);
-        _answerButtons[randomButtonIndex].GetComponentInChildren<Text>().text = _answers[questionOrder];
+        _rightAnswerIndex = Random.Range(0, _answerButtons.Count);
+        _answerButtons[_rightAnswerIndex].GetComponentInChildren<TMP_Text>().text = _answers[questionOrder];
 
         indices.Remove(questionOrder);
 
         int currentAnswerIndex = 0;
+
         for (int i = 0; i < _answerButtons.Count; i++)
         {
-            if (i == randomButtonIndex)
+            if (i == _rightAnswerIndex)
                 continue;
 
-            _answerButtons[i].GetComponentInChildren<Text>().text = _answers[indices[currentAnswerIndex]];
+            _answerButtons[i].GetComponentInChildren<TMP_Text>().text = _answers[indices[currentAnswerIndex]];
             currentAnswerIndex++;
         }
+    }
+
+    private void OnAnswerButtonClick(int buttonIndex)
+    {
+        _currentClickedAnswerButtonIndex = buttonIndex;
+
+        _answerButtons[buttonIndex].GetComponent<Image>().sprite = _buttonPressedImage;
+
+        if (_lastClickedAnswerButtonIndex == _neverClickedAnswerButtonIndex)
+        {
+            _answerButtons[_lastClickedAnswerButtonIndex].GetComponent<Image>().sprite = _buttonImage;
+        }
+
+        _lastClickedAnswerButtonIndex = buttonIndex;
+
+        _isAnswered = true;
+    }
+
+    private void OnAcceptButtonClick()
+    {
+        if (_isAnswered)
+        {
+            if (_currentClickedAnswerButtonIndex == _rightAnswerIndex)
+            {
+                _score++;
+            }
+
+            if (_currentCount == _count)
+            {
+                FinishQuiz();
+            }
+            else
+            {
+                CreateNewQuestion();
+            }
+        }
+
+    }
+
+    private void FinishQuiz()
+    {
+        _resultsScreen.gameObject.SetActive(true);
+        _results.text = $"{_score}/{_count}";
+
+        gameObject.SetActive(false);
     }
 }

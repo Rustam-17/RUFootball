@@ -11811,7 +11811,7 @@ GameObject:
   - component: {fileID: 470090646}
   - component: {fileID: 470090647}
   m_Layer: 5
-  m_Name: Answers
+  m_Name: AnswersArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11824,7 +11824,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470090645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11833,11 +11833,11 @@ RectTransform:
   - {fileID: 859904527}
   - {fileID: 2006999032}
   - {fileID: 1208588707}
-  m_Father: {fileID: 865880792}
+  m_Father: {fileID: 2117427618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -423.88}
+  m_AnchoredPosition: {x: 0, y: -468.59998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &470090647
@@ -14945,7 +14945,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -14957,7 +14957,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 74ea1311b0abff64ab81a2415d1522e6, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -22008,7 +22008,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -22020,7 +22020,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 74ea1311b0abff64ab81a2415d1522e6, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -22239,7 +22239,6 @@ RectTransform:
   - {fileID: 120711184}
   - {fileID: 487869884}
   - {fileID: 665840498}
-  - {fileID: 470090646}
   m_Father: {fileID: 2117427618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -31543,7 +31542,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -31555,7 +31554,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 74ea1311b0abff64ab81a2415d1522e6, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -51807,7 +51806,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -51819,7 +51818,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 74ea1311b0abff64ab81a2415d1522e6, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -54611,6 +54610,7 @@ RectTransform:
   m_Children:
   - {fileID: 246856370}
   - {fileID: 865880792}
+  - {fileID: 470090646}
   - {fileID: 877335298}
   m_Father: {fileID: 1230794386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54631,25 +54631,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba7d1a86891286418365c5e80d495de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 21300000, guid: 28937c287fa9d864597a9f22489a1c97, type: 3}
+  - {fileID: 21300000, guid: fdbf59e387fb882438c8e4e2b3c6330c, type: 3}
+  - {fileID: 21300000, guid: 8cc7afa830ca1f34d8060dc52b0836af, type: 3}
+  - {fileID: 21300000, guid: 03ee68e6eb6e214489e4c3cc3128f000, type: 3}
+  - {fileID: 21300000, guid: df0465bcf6ed94f439b33c782e1fc0e6, type: 3}
+  - {fileID: 21300000, guid: e08b72debf40a2b4c80e926c2260670a, type: 3}
+  - {fileID: 21300000, guid: f04cc1917b4d5f74dbc91db2ac09155e, type: 3}
+  - {fileID: 21300000, guid: 9abd37fc87cfbb64fa72928de9e48100, type: 3}
+  - {fileID: 21300000, guid: 1729579b89f78bc4dba770168bec3b14, type: 3}
+  - {fileID: 21300000, guid: c18655ff6e186d94ab33c50549256700, type: 3}
+  - {fileID: 21300000, guid: a21ac758d47e37c49b97fb6e93207fd8, type: 3}
+  - {fileID: 21300000, guid: 10e14f2c6fa092340b845f8e0edc2e2a, type: 3}
+  - {fileID: 21300000, guid: 7d30100cc34aa4945910ca0bd50ab4f8, type: 3}
+  - {fileID: 21300000, guid: 91dd86a626c2b4b4e9d3b158dca8f9fc, type: 3}
   _answers:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  _answerButtons: []
-  _acceptButton: {fileID: 0}
-  _counter: {fileID: 0}
-  _image: {fileID: 0}
+  - "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440 \u041A\u0435\u0440\u0436\u0430\u043A\u043E\u0432"
+  - "\u0418\u0433\u043E\u0440\u044C \u0410\u043A\u0438\u043D\u0444\u0435\u0435\u0432"
+  - "\u0421\u0435\u0440\u0433\u0435\u0439 \u0418\u0433\u043D\u0430\u0448\u0435\u0432\u0438\u0447"
+  - "\u0420\u043E\u043C\u0430\u043D \u0428\u0438\u0440\u043E\u043A\u043E\u0432"
+  - "\u042E\u0440\u0438\u0439 \u0416\u0438\u0440\u043A\u043E\u0432"
+  - "\u0414\u0438\u043D\u0438\u044F\u0440 \u0411\u0438\u043B\u044F\u043B\u0435\u0442\u0434\u0438\u043D\u043E\u0432"
+  - "\u0410\u043B\u0430\u043D \u0414\u0437\u0430\u0433\u043E\u0435\u0432"
+  - "\u0410\u0440\u0442\u0435\u043C \u0414\u0437\u044E\u0431\u0430"
+  - "\u0424\u0435\u0434\u043E\u0440 \u0421\u043C\u043E\u043B\u043E\u0432"
+  - "\u0414\u0435\u043D\u0438\u0441 \u0413\u043B\u0443\u0448\u0430\u043A\u043E\u0432"
+  - "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440 \u0413\u043E\u043B\u043E\u0432\u0438\u043D"
+  - "\u0410\u043B\u0435\u043A\u0441\u0435\u0439 \u041C\u0438\u0440\u0430\u043D\u0447\u0443\u043A"
+  - "\u041C\u0430\u0440\u0438\u043E \u0424\u0435\u0440\u043D\u0430\u043D\u0434\u0435\u0441"
+  - "\u0421\u0430\u043B\u043E\u043C\u043E\u043D \u0420\u043E\u043D\u0434\u043E\u043D"
+  _answerButtons:
+  - {fileID: 565666065}
+  - {fileID: 859904528}
+  - {fileID: 2006999033}
+  - {fileID: 1208588708}
+  _acceptButton: {fileID: 877335299}
+  _counter: {fileID: 487869885}
+  _image: {fileID: 665840499}
+  _resultsScreen: {fileID: 0}
+  _results: {fileID: 0}
+  _buttonImage: {fileID: 21300000, guid: abccf89b41b8f5d4fa7100e52a93c607, type: 3}
+  _buttonPressedImage: {fileID: 21300000, guid: 74ea1311b0abff64ab81a2415d1522e6, type: 3}
 --- !u!1 &2131156116
 GameObject:
   m_ObjectHideFlags: 0
