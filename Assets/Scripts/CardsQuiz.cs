@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class CardsQuiz : MonoBehaviour
     [SerializeField] private TMP_Text _results;
     [SerializeField] private Sprite _buttonImage;
     [SerializeField] private Sprite _buttonPressedImage;
+    [SerializeField]private List<Button> _resetButtons;
 
     private List<int> _questionsOrder;
     private int _count;
@@ -35,6 +37,11 @@ public class CardsQuiz : MonoBehaviour
             _answerButtons[i].onClick.AddListener(() => OnAnswerButtonClick(index));
         }
 
+        foreach (Button button in _resetButtons)
+        {
+            button.onClick.AddListener(OnResetButtonClicked);
+        }
+
         _acceptButton.onClick.AddListener(OnAcceptButtonClick);
     }
 
@@ -50,21 +57,7 @@ public class CardsQuiz : MonoBehaviour
 
     private void Start()
     {
-        _neverClickedAnswerButtonIndex = -1;
-        _lastClickedAnswerButtonIndex = _neverClickedAnswerButtonIndex;
-        _count = _images.Count;
-        _currentCount = 1;
-        _questionsOrder = new List<int>();
-
-        int number = 0;
-
-        for (int i = 0; i < _count; i++)
-        {
-            _questionsOrder.Add(number++);
-        }
-
-        Shuffle(_questionsOrder);
-        CreateNewQuestion();
+        ResetQuiz();
     }
 
     private void CreateNewQuestion()
@@ -124,14 +117,14 @@ public class CardsQuiz : MonoBehaviour
     {
         _currentClickedAnswerButtonIndex = buttonIndex;
 
-        _answerButtons[buttonIndex].GetComponent<Image>().sprite = _buttonPressedImage;
+        _answerButtons[_currentClickedAnswerButtonIndex].GetComponent<Image>().sprite = _buttonPressedImage;
 
         if (_lastClickedAnswerButtonIndex != _neverClickedAnswerButtonIndex)
         {
             _answerButtons[_lastClickedAnswerButtonIndex].GetComponent<Image>().sprite = _buttonImage;
         }
 
-        _lastClickedAnswerButtonIndex = buttonIndex;
+        _lastClickedAnswerButtonIndex = _currentClickedAnswerButtonIndex;
 
         _isAnswered = true;
     }
@@ -163,5 +156,29 @@ public class CardsQuiz : MonoBehaviour
         _results.text = $"{_score}/{_count}";
 
         gameObject.SetActive(false);
+    }
+
+    private void OnResetButtonClicked()
+    {
+        ResetQuiz();
+    }
+
+    private void ResetQuiz()
+    {
+        _neverClickedAnswerButtonIndex = -1;
+        _lastClickedAnswerButtonIndex = _neverClickedAnswerButtonIndex;
+        _count = _images.Count;
+        _currentCount = 1;
+        _questionsOrder = new List<int>();
+
+        int number = 0;
+
+        for (int i = 0; i < _count; i++)
+        {
+            _questionsOrder.Add(number++);
+        }
+
+        Shuffle(_questionsOrder);
+        CreateNewQuestion();
     }
 }
