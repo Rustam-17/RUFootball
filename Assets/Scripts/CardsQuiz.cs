@@ -19,13 +19,34 @@ public class CardsQuiz : MonoBehaviour
     private int _currentCount;
     private bool _isAnswered;
 
+    private void OnEnable()
+    {
+        foreach(Button button in _answerButtons)
+        {
+            button.onClick.AddListeners();
+        }
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
     private void Start()
     {
         _questionsOrder = new List<int>();
+
+        int number = 1;
+
+        for (int i = 0; i < _count; i++)
+        {
+            _questionsOrder.Add(number++);
+        }
+
         _count = _images.Count;
         _currentCount = 1;
 
-        Shuffle();
+        Shuffle(_questionsOrder);
     }
 
     private void CreateQuestion()
@@ -36,54 +57,45 @@ public class CardsQuiz : MonoBehaviour
 
         _image.sprite = _images[questionOrder];
 
+        SetAnswerButtons(questionOrder);
 
     }
 
-    private void Shuffle()
+    private void Shuffle(List<int> numbers)
     {
-        int number = 1;
-
-        for (int i = 0; i < _count; i++)
-        {
-            _questionsOrder.Add(number++);
-        }
-
         for (int i = _count - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
-            int temp = _questionsOrder[i];
+            int temp = numbers[i];
 
-            _questionsOrder[i] = _questionsOrder[j];
-            _questionsOrder[j] = temp;
+            numbers[i] = numbers[j];
+            numbers[j] = temp;
         }
     }
 
     private void SetAnswerButtons(int questionOrder)
     {
         List<int> indices = new List<int>();
+
         for (int i = 0; i < _answers.Count; i++)
         {
             indices.Add(i);
         }
 
-        // Перемешиваем индексы
         Shuffle(indices);
 
-        // Назначаем правильный ответ случайной кнопке
-        int randomButtonIndex = Random.Range(0, answerButtons.Count);
-        answerButtons[randomButtonIndex].GetComponentInChildren<Text>().text = answerOptions[correctAnswerIndex];
+        int randomButtonIndex = Random.Range(0, _answerButtons.Count);
+        _answerButtons[randomButtonIndex].GetComponentInChildren<Text>().text = _answers[questionOrder];
 
-        // Удаляем использованный индекс из списка перемешанных индексов
-        indices.Remove(correctAnswerIndex);
+        indices.Remove(questionOrder);
 
-        // Назначаем оставшиеся ответы остальным кнопкам
         int currentAnswerIndex = 0;
-        for (int i = 0; i < answerButtons.Count; i++)
+        for (int i = 0; i < _answerButtons.Count; i++)
         {
             if (i == randomButtonIndex)
-                continue;  // Пропускаем кнопку с правильным ответом
+                continue;
 
-            answerButtons[i].GetComponentInChildren<Text>().text = answerOptions[indices[currentAnswerIndex]];
+            _answerButtons[i].GetComponentInChildren<Text>().text = _answers[indices[currentAnswerIndex]];
             currentAnswerIndex++;
         }
     }
