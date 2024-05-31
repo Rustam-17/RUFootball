@@ -51,11 +51,12 @@ public class CardsQuiz : MonoBehaviour
     private void Start()
     {
         _neverClickedAnswerButtonIndex = -1;
+        _lastClickedAnswerButtonIndex = _neverClickedAnswerButtonIndex;
         _count = _images.Count;
         _currentCount = 1;
         _questionsOrder = new List<int>();
 
-        int number = 1;
+        int number = 0;
 
         for (int i = 0; i < _count; i++)
         {
@@ -69,7 +70,7 @@ public class CardsQuiz : MonoBehaviour
     private void CreateNewQuestion()
     {
         int questionOrder = _questionsOrder[_currentCount - 1];
-
+        Debug.Log(questionOrder);
         _counter.text = $"{_currentCount}/{_count}";
 
         _image.sprite = _images[questionOrder];
@@ -125,7 +126,7 @@ public class CardsQuiz : MonoBehaviour
 
         _answerButtons[buttonIndex].GetComponent<Image>().sprite = _buttonPressedImage;
 
-        if (_lastClickedAnswerButtonIndex == _neverClickedAnswerButtonIndex)
+        if (_lastClickedAnswerButtonIndex != _neverClickedAnswerButtonIndex)
         {
             _answerButtons[_lastClickedAnswerButtonIndex].GetComponent<Image>().sprite = _buttonImage;
         }
@@ -144,7 +145,7 @@ public class CardsQuiz : MonoBehaviour
                 _score++;
             }
 
-            if (_currentCount == _count)
+            if (_currentCount > _count)
             {
                 FinishQuiz();
             }
