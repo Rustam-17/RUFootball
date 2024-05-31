@@ -3,20 +3,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardsQuiz : MonoBehaviour
+public class RPLQuiz : MonoBehaviour
 {
-    [SerializeField] private List<Sprite> _images;
+    [SerializeField] private List<string> _questions;
     [SerializeField] private List<string> _answers;
     [SerializeField] private List<Button> _answerButtons;
     [SerializeField] private Button _acceptButton;
     [SerializeField] private TMP_Text _counter;
-    [SerializeField] private Image _image;
+    [SerializeField] private TMP_Text _question;
     [SerializeField] private Transform _resultsScreen;
     [SerializeField] private TMP_Text _resultTitle;
     [SerializeField] private TMP_Text _results;
     [SerializeField] private Sprite _buttonImage;
     [SerializeField] private Sprite _buttonPressedImage;
-    [SerializeField]private List<Button> _resetButtons;
+    [SerializeField] private List<Button> _resetButtons;
 
     private List<int> _questionsOrder;
     private int _count;
@@ -69,7 +69,7 @@ public class CardsQuiz : MonoBehaviour
         int questionOrder = _questionsOrder[_currentCount - 1];
 
         _counter.text = $"{_currentCount}/{_count}";
-        _image.sprite = _images[questionOrder];
+        _question.text = _questions[questionOrder];
 
         SetAnswerButtons(questionOrder);
 
@@ -92,7 +92,7 @@ public class CardsQuiz : MonoBehaviour
     {
         List<int> indices = new List<int>();
 
-        for (int i = 0; i < _answers.Count; i++)
+        for (int i = questionOrder * 4; i <= questionOrder * 4 + 3; i++)
         {
             indices.Add(i);
         }
@@ -100,9 +100,9 @@ public class CardsQuiz : MonoBehaviour
         Shuffle(indices);
 
         _rightAnswerIndex = Random.Range(0, _answerButtons.Count);
-        _answerButtons[_rightAnswerIndex].GetComponentInChildren<TMP_Text>().text = _answers[questionOrder];
+        _answerButtons[_rightAnswerIndex].GetComponentInChildren<TMP_Text>().text = _answers[questionOrder*4];
 
-        indices.Remove(questionOrder);
+        indices.Remove(questionOrder*4);
 
         int currentAnswerIndex = 0;
 
@@ -168,8 +168,8 @@ public class CardsQuiz : MonoBehaviour
 
     private void ResetQuiz()
     {
-        _resultTitle.text = " виз по карточкам";
-        _count = _images.Count;
+        _resultTitle.text = " виз вопросы –ѕЋ";
+        _count = _questions.Count;
         _currentCount = 1;
         _questionsOrder = new List<int>();
 
