@@ -152,7 +152,6 @@ public class CardsQuiz : MonoBehaviour
                 CreateNewQuestion();
             }
         }
-
     }
 
     private void FinishQuiz()

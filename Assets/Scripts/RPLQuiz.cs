@@ -152,7 +152,6 @@ public class RPLQuiz : MonoBehaviour
                 CreateNewQuestion();
             }
         }
-
     }
 
     private void FinishQuiz()
