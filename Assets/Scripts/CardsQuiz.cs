@@ -160,6 +160,8 @@ public class CardsQuiz : MonoBehaviour
         _resultsScreen.gameObject.SetActive(true);
         _results.text = $"{_score}/{_count}";
 
+        ResetQuiz();
+
         gameObject.SetActive(false);
     }
 
