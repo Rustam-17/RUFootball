@@ -174,6 +174,7 @@ public class CardsQuiz : MonoBehaviour
         _resultTitle.text = " виз по карточкам";
         _count = _images.Count;
         _currentCount = 1;
+        _score = 0;
         _questionsOrder = new List<int>();
 
         int number = 0;

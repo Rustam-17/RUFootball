@@ -174,6 +174,7 @@ public class RPLQuiz : MonoBehaviour
         _resultTitle.text = "Квиз вопросы РПЛ";
         _count = _questions.Count;
         _currentCount = 1;
+        _score = 0;
         _questionsOrder = new List<int>();
 
         int number = 0;
